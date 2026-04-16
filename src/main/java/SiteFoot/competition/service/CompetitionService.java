@@ -30,7 +30,6 @@ public class CompetitionService {
     @Transactional
     public void importCompetitionAndSeason(long comp){
 
-
         String path = "/leagues?id=" + comp;
 
         CompetitionResponseApiDto response = callApi(path);

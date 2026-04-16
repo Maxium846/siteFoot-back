@@ -1,27 +1,27 @@
-package SiteFoot.season.entity;
+package SiteFoot.team.entity;
+
 import SiteFoot.competition.entity.Competition;
-import SiteFoot.team.entity.Teams;
+import SiteFoot.season.entity.Season;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.List;
 
-@Entity
-@Table(name = "season")
 @Getter
 @Setter
-public class Season {
+@Entity
+public class Teams {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Integer year;
-    private LocalDate startDate;
-    private LocalDate endDate;
-    private boolean current;
+    private String name;
+    private Long apiFootballId;
+    private LocalDate founded;
+    private String logo;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "competition_id", nullable = false  )
+    @JoinColumn (name = "competitionId")
     private Competition competition;
+
 }

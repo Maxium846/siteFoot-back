@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class LeagueTesponseApiDto {
+public class LeagueResponseApiDto {
 
     private long id;
     private String name;
