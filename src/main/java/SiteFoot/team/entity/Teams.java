@@ -23,5 +23,13 @@ public class Teams {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn (name = "competitionId")
     private Competition competition;
+    private String nameStadium;
+    private String city;
+    private String surface;
+    private String image;
+    private Long capacity;
+    private String currentCoach;
+
+
 
 }

@@ -49,17 +49,22 @@ public class TeamService {
                 Long teamId = teamResponseItemsApiDto.getTeam().getId();
 
                 Teams team = teamRepository.findByApiFootballId(teamId).orElseGet(Teams::new);
+                team.setCompetition(competition);
                 team.setApiFootballId(teamResponseItemsApiDto.getTeam().getId());
                 team.setName(teamResponseItemsApiDto.getTeam().getName());
                 team.setFounded(teamResponseItemsApiDto.getTeam().getFounded());
                 team.setLogo(teamResponseItemsApiDto.getTeam().getLogo());
+                team.setNameStadium(teamResponseItemsApiDto.getVenue().getName());
+                team.setCapacity(teamResponseItemsApiDto.getVenue().getCapacity());
+                team.setImage(teamResponseItemsApiDto.getVenue().getImage());
+                team.setCity(teamResponseItemsApiDto.getVenue().getCity());
+                team.setSurface(teamResponseItemsApiDto.getVenue().getSurface());
 
                 teamRepository.save(team);
             }
         }
 
     }
-
     public TeamResponseApiDto callApi(String path) {
 
         try {
