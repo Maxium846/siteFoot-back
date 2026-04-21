@@ -1,4 +1,4 @@
-package SiteFoot.competition.dto;
+package SiteFoot.competition.dto.reponseApi;
 
 import SiteFoot.season.dto.SeasonReponseApiDto;
 import lombok.Getter;

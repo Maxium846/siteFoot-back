@@ -24,4 +24,7 @@ public class Season {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "competition_id", nullable = false  )
     private Competition competition;
+    private String nameCompetition;
+    @OneToMany(mappedBy = "season")
+    private List<TeamSeason>teamSeason;
 }

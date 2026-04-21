@@ -1,10 +1,10 @@
 package SiteFoot.competition.controller;
 
+import SiteFoot.competition.dto.CompetitionDto;
 import SiteFoot.competition.service.CompetitionService;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -21,6 +21,11 @@ public class CompetitionController {
     public void importLeague (@PathVariable long leagueId) throws Exception {
 
          competitionService.importCompetitionAndSeason(leagueId);
+    }
 
+    @GetMapping("/all")
+    public List<CompetitionDto> getAllCompetition(){
+
+        return competitionService.getAllCompetition();
     }
 }

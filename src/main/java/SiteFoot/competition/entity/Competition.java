@@ -1,6 +1,7 @@
 package SiteFoot.competition.entity;
 
 import SiteFoot.season.entity.Season;
+import SiteFoot.season.entity.TeamSeason;
 import SiteFoot.team.entity.Teams;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -23,9 +24,6 @@ public class Competition {
     private List<Season> seasons = new ArrayList<>();
     private Long apiFootballId;
     @OneToMany(mappedBy = "competition")
-    private List<Teams> teams;
-
-
-
+    private List<TeamSeason> teamSeason;
 
 }

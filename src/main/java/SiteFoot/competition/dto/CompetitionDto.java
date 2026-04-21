@@ -5,6 +5,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CountryReponseApiDto {
+public class CompetitionDto {
+
+    private Long id;
     private String name;
+    private String country;
 }

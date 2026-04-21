@@ -1,8 +1,10 @@
 package SiteFoot.competition.service;
 
-import SiteFoot.competition.dto.CompetitionResponseApiDto;
-import SiteFoot.competition.dto.CompetitionResponseItemApiDto;
+import SiteFoot.competition.dto.CompetitionDto;
+import SiteFoot.competition.dto.reponseApi.CompetitionResponseApiDto;
+import SiteFoot.competition.dto.reponseApi.CompetitionResponseItemApiDto;
 import SiteFoot.competition.entity.Competition;
+import SiteFoot.competition.mapper.CompetitionMapper;
 import SiteFoot.competition.repository.CompetitionRepository;
 import SiteFoot.season.dto.SeasonReponseApiDto;
 import SiteFoot.season.entity.Season;
@@ -12,6 +14,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.concurrent.CompletionException;
+import java.util.stream.Collectors;
 
 @Service
 public class CompetitionService {
@@ -27,6 +32,12 @@ public class CompetitionService {
         this.apiSportClient = apiSportClient;
     }
 
+    public List<CompetitionDto> getAllCompetition (){
+
+
+        return competitionRepository.findAll().stream().map(CompetitionMapper::toDto).collect(Collectors.toList());
+
+    }
     @Transactional
     public void importCompetitionAndSeason(long comp){
 
@@ -57,6 +68,7 @@ public class CompetitionService {
             seasonToBdd.setCurrent(c.isCurrent());
             seasonToBdd.setStartDate(LocalDate.parse(c.getStart()));
             seasonToBdd.setEndDate(LocalDate.parse(c.getEnd()));
+            seasonToBdd.setNameCompetition(competition.getName());
             seasonRepository.save(seasonToBdd);
         }
 

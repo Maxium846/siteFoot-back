@@ -1,10 +1,9 @@
 package SiteFoot.team.controller;
-
+import SiteFoot.team.dto.TeamsListDto;
 import SiteFoot.team.service.TeamService;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/team")
@@ -21,7 +20,13 @@ public class TeamController {
     @PostMapping("/generateClub/{competitionId}")
     public void importClubBySeasons (@PathVariable Long competitionId ){
 
-        teamService.importTeamBySaison(competitionId);
+        teamService.importTeamBySeason(competitionId);
 
     }
+    @GetMapping("/{competitionId}/{years}")
+    public List<TeamsListDto> getListClubById(@PathVariable int competitionId, @PathVariable int years){
+
+        return teamService.getListTeams(competitionId,years);
+    }
+
 }
