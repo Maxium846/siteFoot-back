@@ -12,10 +12,8 @@ import SiteFoot.season.repository.SeasonRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
-
 import java.time.LocalDate;
 import java.util.List;
-import java.util.concurrent.CompletionException;
 import java.util.stream.Collectors;
 
 @Service

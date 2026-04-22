@@ -8,7 +8,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping ("/api/league")
+@RequestMapping ("/api/competitions")
 public class CompetitionController {
 
     private final CompetitionService competitionService;
@@ -17,10 +17,10 @@ public class CompetitionController {
         this.competitionService = competitionService;
     }
 
-    @PostMapping("/generateLeague/{leagueId}")
-    public void importLeague (@PathVariable long leagueId) throws Exception {
+    @PostMapping("/generateLeague/{competitionId}")
+    public void importLeague (@PathVariable long competitioId) throws Exception {
 
-         competitionService.importCompetitionAndSeason(leagueId);
+         competitionService.importCompetitionAndSeason(competitioId);
     }
 
     @GetMapping("/all")
